@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.bejing.model.history.HistoryRepository">
+     <select id="findAll" resultType="shop.bejing.model.history.History">
+        select * from history_tb
+    </select>
+
+    <select id="findById" resultType="shop.bejing.model.history.History">
+        select * from history_tb where id = #{id}
+    </select>   
+
+    <select id="findByUsernameAndPassword" resultType="shop.bejing.model.history.History">
+        select * from history_tb where username = #{username} and password = #{password}
+    </select> 
+
+    <insert id="insert">
+        insert into history_tb (username, password, fullname, created_at) values(#{username}, #{password}, #{fullname}, now())
+    </insert>    
+
+    <delete id="deleteById" >
+        delete from history_tb where id = #{id} 
+    </delete>    
+
+    <update id="updateById" >
+        update history_tb set amount= #{amount}, w_blanace= #{wBlanace}, d_balance= #{dBalance}, w_accountId= #{wAccountId}, d_accountId= #{dAccountId} where id = #{id} 
+    </update>    
+
+</mapper>
